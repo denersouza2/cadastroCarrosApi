@@ -6,6 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+
+import org.hibernate.validator.constraints.Length;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,10 +21,12 @@ import lombok.Setter;
 @Setter
 public class Carro {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@Column
+	@NotEmpty @NotNull @Length(max = 255, min = 3)
 	private String descricao;
 	@Column
+	@NotEmpty @NotNull @Length(max = 10, min = 4)
 	private String ano;
 }
